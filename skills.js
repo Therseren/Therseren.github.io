@@ -8,15 +8,23 @@
 
 const SKILLS = [
   {
-    group: "Languages & Tools",
-    items: ["Python", "SQL", "Git", "LaTeX"]
+    group: "Languages",
+    items: ["Python", "SQL", "C/C++", "Rust", "LaTeX"]
   },
   {
-    group: "AI & Data",
-    items: ["Machine Learning", "Data Analysis", "Network Analysis"]
+    group: "AI & Machine Learning",
+    items: ["Machine Learning", "Deep Learning", "Supervised Learning", "Unsupervised Learning", "Reinforcement Learning"]
   },
   {
-    group: "Human-Centered Design",
-    items: ["User Research", "Interaction Design"]
+    group: "Foundations",
+    items: ["Statistics", "Mathematics", "Discrete Mathematics", "Algorithms & Data Structures"]
+  },
+  {
+    group: "Tools & Environments",
+    items: ["PyCharm", "VS Code", "RStudio", "Maple", "Excel"]
+  },
+  {
+    group: "Design",
+    items: ["UX Design"]
   }
 ];
