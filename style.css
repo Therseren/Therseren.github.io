@@ -325,6 +325,30 @@ h1, h2, h3 {
   border-radius: 999px;
 }
 
+.project-abstract {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+.project-abstract summary {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.project-abstract summary::-webkit-details-marker { display: none; }
+.project-abstract summary::before {
+  content: "+ ";
+}
+.project-abstract[open] summary::before {
+  content: "− ";
+}
+.project-abstract p {
+  margin: 0.7rem 0 0;
+  line-height: 1.55;
+}
+
 .project-links {
   display: flex;
   gap: 1rem;

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reasoning for Large Language Models (rStar) — Mikkel Thers Nielsen</title>
+<meta name="description" content="Testing the robustness of rStar reasoning on GSM8K — noise, confounding examples, and adaptive temperature.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .case-study { max-width: 900px; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
+  .case-study .back-link {
+    font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-soft);
+    text-decoration: none; display: inline-block; margin-bottom: 2rem;
+  }
+  .case-study .back-link:hover { color: var(--accent); }
+  .case-study h1 { font-size: clamp(2rem, 4vw, 2.6rem); line-height: 1.1; margin-bottom: 1rem; max-width: 34ch; }
+  .case-study .meta {
+    font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft);
+    margin-bottom: 2.5rem; display: flex; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .case-study .meta span strong { color: var(--ink); }
+  .case-study p { color: var(--ink-soft); margin: 0 0 1.1rem; max-width: 68ch; }
+  .case-study .lead { font-size: 1.08rem; color: var(--ink); }
+
+  /* Poster section — the whole point of this page */
+  .poster-section { margin: 3rem 0; }
+  .poster-frame {
+    width: 100%;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .poster-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .poster-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    border: 1.5px dashed var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--ink-soft);
+    text-align: center;
+    padding: 2rem;
+  }
+  .poster-placeholder span { font-family: var(--font-mono); }
+  .poster-placeholder .main-label { font-size: 1rem; }
+  .poster-placeholder .sub-label { font-size: 0.78rem; color: var(--line); }
+
+  .case-study .cta-row {
+    display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem;
+    padding-top: 2rem; border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <span class="topnav-mark">Mikkel Thers Nielsen</span>
+  <div class="topnav-links">
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#skills">Skills</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<main class="case-study">
+  <a href="index.html#projects" class="back-link">← Back to projects</a>
+
+  <p class="eyebrow">Group Project — DTU</p>
+  <h1>Reasoning for Large Language Models (rStar)</h1>
+
+  <div class="meta">
+    <span><strong>Year:</strong> 2024</span>
+    <span><strong>With:</strong> Christine Schütt, Emil Sjöberg, Sara Sterlie</span>
+    <span><strong>Dataset:</strong> GSM8K</span>
+  </div>
+
+  <p class="lead">
+    We tested how robust the rStar reasoning method is when things aren't ideal — irrelevant
+    noise in the question, confounding examples that break stereotypes, and different
+    generation settings — to see whether its reasoning gains actually hold up.
+  </p>
+  <p>
+    rStar improves reasoning in small language models without any fine-tuning, using a
+    generator and discriminator model working together through Monte Carlo Tree Search.
+    We compared four variations on GSM8K: the regular method, a version with injected noise,
+    one tested on counter-stereotypical gender examples, and one with adaptive temperature
+    during token generation. The discriminator added no measurable benefit, injected noise
+    only hurt performance slightly, and rStar made the same mistakes as GPT-4 on
+    counter-stereotypical examples — but adaptive temperature gave a clear accuracy boost.
+  </p>
+
+  <div class="poster-section">
+    <!--
+      Replace the placeholder div below with your poster image, e.g.:
+      <div class="poster-frame">
+        <img src="images/rstar-poster.png" alt="Reasoning for Large Language Models (rStar) — poster">
+      </div>
+    -->
+    <div class="poster-placeholder">
+      <span class="main-label">Insert your poster here</span>
+      <span class="sub-label">images/rstar-poster.png</span>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <a href="mailto:Mikkelthers@gmail.com?subject=Code request: Reasoning for Large Language Models (rStar)" class="btn btn-primary">Request the code →</a>
+    <a href="index.html#contact" class="btn btn-ghost">Get in touch about this project</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <span>Mikkel Thers Nielsen — DTU</span>
+  <span>Built for GitHub Pages</span>
+</footer>
+
+</body>
+</html>

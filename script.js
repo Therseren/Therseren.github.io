@@ -51,8 +51,21 @@ function renderProjects() {
     const tags = (p.tags || []).map((t) => `<span class="tag">${t}</span>`).join("");
 
     const links = [];
+    if (p.links && p.links.page) links.push(`<a href="${p.links.page}">Read case study →</a>`);
     if (p.links && p.links.demo) links.push(`<a href="${p.links.demo}" target="_blank" rel="noopener">View demo →</a>`);
     if (p.links && p.links.github) links.push(`<a href="${p.links.github}" target="_blank" rel="noopener">View code →</a>`);
+    const hasCodeLink = !!(p.links && (p.links.demo || p.links.github));
+    if (!hasCodeLink) {
+      const subject = encodeURIComponent(`Code request: ${p.title}`);
+      links.push(`<a href="mailto:Mikkelthers@gmail.com?subject=${subject}">Request the code →</a>`);
+    }
+
+    const abstractBlock = p.abstract
+      ? `<details class="project-abstract">
+          <summary>Read abstract</summary>
+          <p>${p.abstract}</p>
+        </details>`
+      : "";
 
     card.innerHTML = `
       ${thumb}
@@ -60,6 +73,7 @@ function renderProjects() {
         ${p.year ? `<span class="project-year">${p.year}</span>` : ""}
         <h3>${p.title}</h3>
         <p class="project-desc">${p.description || ""}</p>
+        ${abstractBlock}
         <div class="project-tags">${tags}</div>
         ${links.length ? `<div class="project-links">${links.join("")}</div>` : ""}
       </div>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bachelor Thesis — Mikkel Thers Nielsen</title>
+<meta name="description" content="Normative Alignment of Recommender Systems at the User Level via Internal Label Shift — Bachelor Thesis, DTU Compute.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .case-study { max-width: 760px; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
+  .case-study .back-link {
+    font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-soft);
+    text-decoration: none; display: inline-block; margin-bottom: 2rem;
+  }
+  .case-study .back-link:hover { color: var(--accent); }
+  .case-study h1 { font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.08; margin-bottom: 1rem; }
+  .case-study .meta {
+    font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft);
+    margin-bottom: 2.5rem; display: flex; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .case-study .meta span strong { color: var(--ink); }
+  .case-study h2 {
+    font-size: 1.35rem; margin: 2.75rem 0 1rem; padding-top: 1.75rem;
+    border-top: 1px solid var(--line);
+  }
+  .case-study h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .case-study p { color: var(--ink-soft); margin: 0 0 1.1rem; }
+  .case-study .lead { font-size: 1.12rem; color: var(--ink); }
+  .case-study ul { color: var(--ink-soft); padding-left: 1.3rem; }
+  .case-study li { margin-bottom: 0.5rem; }
+  .case-study .cta-row {
+    display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem;
+    padding-top: 2rem; border-top: 1px solid var(--line);
+  }
+  .case-study .callout {
+    background: var(--accent-soft); border-radius: var(--radius);
+    padding: 1.25rem 1.5rem; margin: 1.5rem 0; font-size: 0.95rem; color: var(--ink);
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <span class="topnav-mark">Mikkel Thers Nielsen</span>
+  <div class="topnav-links">
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#skills">Skills</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<main class="case-study">
+  <a href="index.html#projects" class="back-link">← Back to projects</a>
+
+  <p class="eyebrow">Bachelor Thesis — DTU Compute</p>
+  <h1>Normative Alignment of Recommender Systems at the User Level via Internal Label Shift</h1>
+
+  <div class="meta">
+    <span><strong>Supervisor:</strong> Jes Frellsen</span>
+    <span><strong>Completed:</strong> March 2026</span>
+    <span><strong>Dataset:</strong> EB-NeRD (news recommendation)</span>
+  </div>
+
+  <h2>The problem</h2>
+  <p class="lead">
+    News recommender systems are often optimized purely for engagement — clicks, watch time —
+    which can quietly concentrate what people read into a narrow set of categories over time.
+  </p>
+  <p>
+    A prior method, NAILS, corrects for this by nudging a system's recommendations back toward
+    a target mix of content categories. But it does this correction <em>in aggregate</em> —
+    across all users and impressions at once. That raised a question worth testing: if the
+    system looks balanced on average, does that mean any individual user's feed is actually
+    balanced? Or can the system "average out" to look fine while some users still get a
+    heavily skewed set of recommendations?
+  </p>
+
+  <h2>What I built</h2>
+  <p>
+    I extended NAILS to work at the level of a single recommendation event instead of only
+    across the whole system. Rather than computing one global correction and applying it
+    everywhere, my version computes a correction specific to each impression, based on what
+    categories are actually available to that user at that moment.
+  </p>
+  <p>
+    I implemented both the original global method and my per-user extension, and tested both
+    across three different ways of turning scores into an actual Top-10 list: a straightforward
+    ranking, a stochastic sampling approach (Plackett-Luce), and a greedy re-ranking method
+    inspired by prior calibration work (Steck).
+  </p>
+
+  <h2>What I found</h2>
+  <div class="callout">
+    Pooled, system-wide alignment and per-user alignment are <strong>not the same objective</strong> —
+    a method can look like it's working when you average everything together, while individual
+    users still see a skewed set of recommendations.
+  </div>
+  <ul>
+    <li>The original global method did improve alignment when measured in aggregate, exactly as designed.</li>
+    <li>But under a "typical user" view — averaging alignment per user rather than pooling everyone together — the global method barely moved the needle.</li>
+    <li>My per-user extension showed a clear, consistent improvement under that same typical-user view, for both of the divergence measures I tracked.</li>
+    <li>Stronger correction isn't free: pushing harder toward the target category mix increases how much the final list deviates from the original ranking (measured as regret and list overlap), so there's a real trade-off to manage rather than a setting to maximize.</li>
+  </ul>
+
+  <h2>Why it matters</h2>
+  <p>
+    The practical takeaway is that "does this alignment method work?" depends entirely on what
+    you're measuring. If your goal is a healthy-looking system in aggregate, the original global
+    method is fine. If your goal is making sure a <em>typical individual's</em> recommendations
+    are actually balanced — which is arguably the more honest goal — the per-user approach does
+    meaningfully better, at a controllable cost to ranking utility.
+  </p>
+
+  <div class="cta-row">
+    <a href="https://github.com/Therseren/Bachelor_Nails_Plackett_Steck_Codebase" target="_blank" rel="noopener" class="btn btn-primary">View code on GitHub →</a>
+    <a href="index.html#contact" class="btn btn-ghost">Get in touch about this project</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <span>Mikkel Thers Nielsen — DTU</span>
+  <span>Built for GitHub Pages</span>
+</footer>
+
+</body>
+</html>
