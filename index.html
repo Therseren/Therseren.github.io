@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikkel Thers Nielsen — Portfolio</title>
+<meta name="description" content="Projects and work from Mikkel Thers Nielsen, DTU — Artificial Intelligence and Data, Human-Centered AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <span class="topnav-mark">Mikkel Thers Nielsen</span>
+  <div class="topnav-links">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow">Portfolio — DTU</p>
+      <h1>Mikkel Thers<br>Nielsen</h1>
+      <p class="bio">
+        I'm Mikkel, and this is a collection of projects from my studies at DTU.
+        I completed my Bachelor's in Artificial Intelligence and Data (2022–2026)
+        and am currently pursuing my Master's in Human-Centered Artificial Intelligence (2026–2028).
+        Below are some relevant projects showcasing my work across AI, data, and design.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">See projects</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="hero-contact">
+        <a href="https://www.linkedin.com/in/mikkelt-nielsen/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <span class="hero-contact-sep">·</span>
+        <a href="mailto:Mikkelthers@gmail.com">Mikkelthers@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <!-- Replace this block with: <img src="images/your-photo.jpg" alt="Mikkel Thers Nielsen"> -->
+      <div class="hero-photo-placeholder">
+        <span>Your photo</span>
+        <span class="hero-photo-sub">images/your-photo.jpg</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="projects" class="section">
+    <div class="section-head">
+      <p class="eyebrow">01 — Selected work</p>
+      <h2>Projects</h2>
+      <p class="section-sub">A running log of coursework, research, and independent builds. Filter by track to narrow the list.</p>
+    </div>
+
+    <div class="filters" id="filters"></div>
+
+    <div class="project-grid" id="project-grid">
+      <!-- Populated by script.js from projects.js -->
+    </div>
+  </section>
+
+  <section id="skills" class="section skills-section">
+    <div class="section-head">
+      <p class="eyebrow">02 — Toolkit</p>
+      <h2>Skills</h2>
+      <p class="section-sub">Grouped by area. Edit <code>skills.js</code> to update this list.</p>
+    </div>
+    <div class="skills-grid" id="skills-grid">
+      <!-- Populated by script.js from skills.js -->
+    </div>
+  </section>
+
+  <section id="contact" class="section contact-section">
+    <div class="contact-card">
+      <div>
+        <p class="eyebrow">03 — Contact</p>
+        <h2>Let's talk</h2>
+        <p class="section-sub">Open to student assistant and research positions across AI, data, and human-centered design.</p>
+      </div>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/mikkelt-nielsen/" target="_blank" rel="noopener" class="contact-link">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">mikkelt-nielsen →</span>
+        </a>
+        <a href="mailto:Mikkelthers@gmail.com" class="contact-link">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">Mikkelthers@gmail.com →</span>
+        </a>
+        <a href="cv-placeholder.pdf" download class="contact-link">
+          <span class="contact-label">CV</span>
+          <span class="contact-value">Download PDF →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span>Mikkel Thers Nielsen — DTU</span>
+  <span>Built for GitHub Pages</span>
+</footer>
+
+<script src="projects.js"></script>
+<script src="skills.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
